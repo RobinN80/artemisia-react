@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import { Button, Card, CardBody, CardFooter, CardHeader, CardImg } from 'reactstrap';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {showInfo: false, isTicketModelOpen: false};
+
+    this.toggleInfo = this.toggleInfo.bind(this);
+    this.toggleTicketModel= this.toggleTicketModel.bind(this);
+  }
+
+  toggleInfo(){
+    this.setState({ showInfo: !this.state.showInfo });
+  }
+
+  toggleTicketModel(){
+    this.setState({ isTicketModelOpen : !this.state.isTicketModelOpen});
+  }
+
+  render(){
+    return (
+      <div className = {Card}>
+        <div className = {CardHeader}></div>
+        <div className = {CardBody}>
+          <div className = {CardImg}></div>
+        </div>
+        <div className = {CardFooter}>
+          <Button onClick={this.toggleInfo}>More Info</Button>
+          <Button onClick={this.toggleTicketModel}>Buy Tickets</Button>
+        </div>
+
+      </div>
+    )
+  }
 }
 
 export default App;
