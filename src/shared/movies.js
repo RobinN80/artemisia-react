@@ -1,7 +1,10 @@
+import scentofgreenpapaya from './images/scentofgreenpapaya.jpg';
+import bigLilFarm from './images/big-lil-farm.jpg'
+
 export const MOVIES = [
   {
     id: 0,
-    image: "images/scentofgreenpapaya.jpg",
+    image: scentofgreenpapaya,
     title: "THE SCENT OF GREEN PAPAYA",
     orgin: "(1993) France/Vietnam 104 min",
     genre: "Drama/Music/Romance",
@@ -12,7 +15,7 @@ export const MOVIES = [
   },
   {
     id: 1,
-    image: "images/big-lil-farm.jpg",
+    image: bigLilFarm,
     title: "THE BIGGEST LITTLE FARM",
     orgin: "(2018) USA 89 min.",
     genre: "Documentary",
@@ -64,3 +67,5 @@ export const MOVIES = [
     director: "",
   },
 ];
+
+export default MOVIES;
