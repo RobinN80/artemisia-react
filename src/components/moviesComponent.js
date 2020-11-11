@@ -1,6 +1,29 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, CardImg } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, CardHeader, CardImg, Col, Row } from 'reactstrap';
 import MOVIES from '../shared/movies';
+
+class Movie extends Component{
+    render(){
+        const {title, image} = this.props.movie;
+
+        return(
+            <Row>
+                <Col sm="12">
+                    <Card>
+                        <CardHeader>{title}</CardHeader>
+                        <CardBody>
+                            <div>{image}</div>
+                            <CardFooter>
+                                <Button onClick={this.toggleInfo}>More Info</Button>
+                                <Button onClick={this.toggleTicketModel}>Buy Tickets</Button>
+                            </CardFooter>
+                        </CardBody> 
+                    </Card>
+                </Col>
+            </Row>
+        )
+    }
+}
 
 class Movies extends Component{
     constructor(props){
@@ -22,20 +45,10 @@ class Movies extends Component{
     render(){
     return (
         <div style={{display: 'inline-block', width: 300, margin: 10}}>
-        {MOVIES.map( movie => 
+        {MOVIES.map( MOVIE => 
             {
             return(
-                <div className = {Card}>
-                <div className = {CardHeader}>{movie.title}
-                </div>
-                <div className = {CardBody}>
-                    <div className = {CardImg}>{movie.image}</div>
-                    <div className = {CardFooter}>
-                    <Button onClick={this.toggleInfo}>More Info</Button>
-                    <Button onClick={this.toggleTicketModel}>Buy Tickets</Button>
-                    </div>
-                </div> 
-                </div>
+                    <Movie key={MOVIE.id} movie={MOVIE} />
             );
             })
         }

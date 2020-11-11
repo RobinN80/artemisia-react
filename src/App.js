@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/headerComponent';
 import Movies from './components/moviesComponent';
 
+
 class App extends Component {
  render(){
    return(
