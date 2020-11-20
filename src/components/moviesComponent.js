@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, CardImg, Col, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, CardHeader, Col, Row } from 'reactstrap';
 import MOVIES from '../shared/movies';
 
 class Movie extends Component{
@@ -7,12 +7,14 @@ class Movie extends Component{
         const {title, image} = this.props.movie;
 
         return(
-            <Row>
-                <Col sm="12">
+            <Row style={{display: 'inline-block', width: 300, margin: 10}}>
+                <Col>
                     <Card>
                         <CardHeader>{title}</CardHeader>
                         <CardBody>
-                            <div>{image}</div>
+                            <div src={image} alt='movie image'>
+                                {image}
+                            </div>
                             <CardFooter>
                                 <Button onClick={this.toggleInfo}>More Info</Button>
                                 <Button onClick={this.toggleTicketModel}>Buy Tickets</Button>
@@ -44,7 +46,7 @@ class Movies extends Component{
 
     render(){
     return (
-        <div style={{display: 'inline-block', width: 300, margin: 10}}>
+        <div>
         {MOVIES.map( MOVIE => 
             {
             return(

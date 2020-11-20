@@ -1,6 +1,7 @@
 import scentofgreenpapaya from './images/scentofgreenpapaya.jpg';
 import bigLilFarm from './images/big-lil-farm.jpg'
 
+
 export const MOVIES = [
   {
     id: 0,
