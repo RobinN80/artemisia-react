@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Col, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, CardHeader, Col, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import MOVIES from '../shared/movies';
 
-class Movie extends Component{
-    render(){
-        const {title, image} = this.props.movie;
-
+function Movie(props) {
+        const {title, image} = props.movie;
+        console.log("Movie Props", props);
         return(
             <Row style={{display: 'inline-block', width: 300, margin: 10}}>
                 <Col>
@@ -16,24 +15,27 @@ class Movie extends Component{
                                 {image}
                             </div>
                             <CardFooter>
-                                <Button onClick={this.toggleInfo}>More Info</Button>
-                                <Button onClick={this.toggleTicketModel}>Buy Tickets</Button>
+                                <Button onClick={props.toggleInfo}>More Info</Button>
+                                <Button onClick={props.toggleTicketModel}>Buy Tickets</Button>
                             </CardFooter>
                         </CardBody> 
                     </Card>
                 </Col>
             </Row>
         )
-    }
+
 }
 
 class Movies extends Component{
     constructor(props){
-    super(props);
-    this.state = {showInfo: false, isTicketModelOpen: false};
+        super(props);
+        this.state = {
+            showInfo: false, 
+            isTicketModelOpen: false
+        };
 
-    this.toggleInfo = this.toggleInfo.bind(this);
-    this.toggleTicketModel= this.toggleTicketModel.bind(this);
+        this.toggleInfo = this.toggleInfo.bind(this);
+        this.toggleTicketModel= this.toggleTicketModel.bind(this);
     }
 
     toggleInfo(){
@@ -46,15 +48,34 @@ class Movies extends Component{
 
     render(){
     return (
-        <div>
-        {MOVIES.map( MOVIE => 
-            {
-            return(
-                    <Movie key={MOVIE.id} movie={MOVIE} />
-            );
-            })
-        }
-        </div>
+           <> 
+            <div>
+            {MOVIES.map( MOVIE => 
+                {
+                return(
+                        <Movie 
+                            key={MOVIE.id} 
+                            movie={MOVIE} 
+                            toggleInfo={this.toggleInfo}
+                            toggleTicketModel={this.toggleTicketModel}
+                        />
+                );
+                })
+            }
+            </div>
+            <div>
+                <Modal
+                    isOpen= {this.state.isTicketModelOpen}
+                    toggle= {this.toggleTicketModel}
+                >
+                    <ModalHeader>Purchase Tickets</ModalHeader>
+                    <ModalBody>
+
+                    </ModalBody>
+
+                </Modal>
+            </div>
+        </>
     )
     }
 }
