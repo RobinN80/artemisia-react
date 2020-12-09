@@ -1,12 +1,14 @@
 import scentofgreenpapaya from './images/scentofgreenpapaya.jpg';
 import bigLilFarm from './images/big-lil-farm.jpg'
+//import projector from './images/projecter.png'
 
 
 export const MOVIES = [
   {
     id: 0,
-    image: scentofgreenpapaya,
+    image: "Movie Image Here",
     title: "THE SCENT OF GREEN PAPAYA",
+    date: "Postponed Until Futher Notice ",
     orgin: "(1993) France/Vietnam 104 min",
     genre: "Drama/Music/Romance",
     language: "In Vietnamese with English subtitles",
@@ -16,8 +18,9 @@ export const MOVIES = [
   },
   {
     id: 1,
-    image: bigLilFarm,
+    image: "Movie Image Here",
     title: "THE BIGGEST LITTLE FARM",
+    date: "Postponed Until Futher Notice ",
     orgin: "(2018) USA 89 min.",
     genre: "Documentary",
     language: "English",
@@ -27,8 +30,9 @@ export const MOVIES = [
   },
   {
     id: 2,
-    image: "/images/satan&adam.jpg",
+    image: "Movie Image Here",
     title: "SATAN AND ADAM",
+    date: "Postponed Until Futher Notice ",
     orgin: "(2018) USA  80 min.",
     genre: "Documentary/Music",
     language: "English",
@@ -38,8 +42,9 @@ export const MOVIES = [
   },
   {
     id: 3,
-    image: "images/buneal.jpg",
+    image: "Movie Image Here",
     title: "Bunuel in the Labyrinth of Turtles",
+    date: "Postponed Until Futher Notice ",
     orgin: "(2018) Spain",
     genre: "Animation/Comedy",
     language: "Originally in Spanish/French",
@@ -48,8 +53,9 @@ export const MOVIES = [
   },
   {
     id: 4,
-    image: "images/ingmarbergmandoc.jpg",
+    image: "Movie Image Here",
     title: "Searching for Ingmar",
+    date: "Postponed Until Futher Notice ",
     orgin: "Germany/France (2018) 99 min. ",
     genre: "Documentary In Color and Black and White",
     language: "",
@@ -59,8 +65,9 @@ export const MOVIES = [
   },
   {
     id: 5,
-    image: "images/frown.jpg",
+    image: "Movie Image Here",
     title: "No Screenings until further notice",
+    date: '',
     orgin: "",
     genre: "",
     language: "",
