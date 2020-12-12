@@ -6,7 +6,6 @@ function Nav() {
             <Row>
                 <Navbar>
                     <NavbarBrand>Home</NavbarBrand>
-                    <NavbarBrand>More Info</NavbarBrand>
                     <NavbarBrand>About Us</NavbarBrand>
                 </Navbar>
             </Row>

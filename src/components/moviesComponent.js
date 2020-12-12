@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Form, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import MOVIES from '../shared/movies';
+//import '../App.css';
 
 function Movie(props) {
         const {title, image, date, description} = props.movie;
@@ -34,16 +35,29 @@ function Movie(props) {
 
 }
 
+
+
+
 class Movies extends Component{
     constructor(props){
         super(props);
         this.state = {
             showInfo: false, 
-            isTicketModalOpen: false
+            isTicketModalOpen: false,
+            numRegular: 0,
+            numSenStud: 0,
+            numMembers: 0,
+            totalPrice: 0,
+
         };
 
         this.toggleInfo = this.toggleInfo.bind(this);
         this.toggleTicketModal= this.toggleTicketModal.bind(this);
+        this.handleChangeRegular= this.handleChangeRegular.bind(this);
+        this.handleChangeSenStud= this.handleChangeSenStud.bind(this);
+        this.handleChangeMember= this.handleChangeMember.bind(this);
+        this.handleSubmit= this.handleSubmit.bind(this);
+
     }
 
 
@@ -55,9 +69,28 @@ class Movies extends Component{
     this.setState({ isTicketModalOpen : !this.state.isTicketModalOpen});
     }
 
+    handleChangeRegular(event){
+        this.setState({numRegular: event.target.value});
+    }
+
+    handleChangeSenStud(event){
+        this.setState({numSenStud: event.target.value});
+    }
+
+    handleChangeMember(event){
+        this.setState({numMembers: event.target.value});
+    }
+
+    handleSubmit(){
+        console.log('tickets:', this.state.numMembers, this.state.numSenStud, this.state.numRegular);
+        this.setState ({totalPrice : this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5});
+    } 
+
+
+
     render(){
-    return (
-           <> 
+    
+    return ( 
             <div>
             {MOVIES.map( MOVIE => 
                 {
@@ -70,28 +103,24 @@ class Movies extends Component{
                             toggleTicketModal={this.toggleTicketModal}
                             toggleInfo={this.toggleInfo}
                         />
-                        
                     </>
                 );
                 })
             }
-            </div>
             <div>
                 <Modal
                     isOpen= {this.state.isTicketModalOpen}
                     toggle= {this.toggleTicketModal}
+                    value= {this.state.value}
+                    totalPrice={this.handleTicketsPrice}
                 >
-                    <ModalHeader>Purchase Tickets</ModalHeader>
+                    <ModalHeader toggle={this.toggleTicketModal}>Purchase Tickets</ModalHeader>
                     <ModalBody>
                         <Form>
-                                Type of Ticket?
-                                <select>
-                                    <option value={7}>Regular Admission</option>
-                                    <option value={5}>Member Price</option>
-                                </select>
-
-                                Number of Tickets? 
-                                <select>
+                            <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
+                                Regular Admission $9
+                                <select value= {this.state.numRegular} onChange={this.handleChangeRegular}>
+                                    <option value={0}>0</option>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value={3}>3</option>
@@ -99,15 +128,47 @@ class Movies extends Component{
                                     <option value={5}>5</option>
                                     <option value={6}>6</option>
                                 </select>
-                            
+
+                            </FormGroup>
+                            <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
+                                Seniors and Students $7
+                                <select value={this.state.numSenStud} onChange={this.handleChangeSenStud}>
+                                    <option value={0}>0</option>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
+                                    <option value={6}>6</option>
+                                </select>
+                            </FormGroup>
+                            <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
+                                <label>Members $5 
+                                    <select value={this.state.numMembers} onChange={this.handleChangeMember} >
+                                        <option value={0}>0</option>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                        <option value={6}>6</option>
+                                    </select>
+                                </label>
+                            </FormGroup>
+                            Total Price:  $ {this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5}
+                            <Button onClick={this.handleSubmit}>
+                                Purchase Tickets
+                            </Button>
                         </Form>
                     </ModalBody>
 
                 </Modal>
             </div>
-        </>
+            </div>  
     )
     }
 }
+
+
 
 export default Movies;
