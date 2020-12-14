@@ -37,7 +37,7 @@
   }
 }
 
-FormGroup {
-  align-content: center;
-  font-size: x-large;
+
+Button {
+  color: blue;
 }

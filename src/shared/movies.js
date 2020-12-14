@@ -1,6 +1,6 @@
 import scentofgreenpapaya from './images/scentofgreenpapaya.jpg';
-import bigLilFarm from './images/big-lil-farm.jpg'
-//import projector from './images/projecter.png'
+import bigLilFarm from '../shared/images/big-lil-farm.jpg'
+//import projector from '../shared/images/'
 
 
 export const MOVIES = [
@@ -48,7 +48,7 @@ export const MOVIES = [
     orgin: "(2018) Spain",
     genre: "Animation/Comedy",
     language: "Originally in Spanish/French",
-    description: "",
+    description: "The infamous surrealist filmmaker Luis Buñuel is left penniless after the scandalous release of L’Age d’Or leads to a falling out with collaborator Salvador Dalí. On a whim, Buñuel’s good friend, sculptor Ramón Acín, buys a lottery ticket and promises to devote his winnings to fund Buñuel’s next film. Incredibly, Ramón wins the jackpot, sending the two friends to the remote mountains of their native Spain to film the documentary Las Hurdes: Land Without Bread. Driven by mad artistic impulse and haunted by childhood memories, Buñuel must confront the specter of mortality looming over the lives of his subjects –and his own. In a stranger-than-fiction tale befitting the master filmmaker, Buñuel in the Labyrinth of the Turtles tells the true story behind a fascinating episode in cinematic history, utilizing sensitive performances as well as excerpts from Buñuel’s filmography to present a deeply affecting and humanistic portrait of an artist hunting for his purpose.",
     director: "Directed by Salvador Simo",
   },
   {
@@ -66,8 +66,30 @@ export const MOVIES = [
   {
     id: 5,
     image: "Movie Image Here",
-    title: "No Screenings until further notice",
-    date: '',
+    title: "Featured Movie",
+    date: 'Someday Soon',
+    orgin: "",
+    genre: "",
+    language: "",
+    description: "",
+    director: "",
+  },
+  {
+    id: 6,
+    image: "Movie Image Here",
+    title: "Featured Movie",
+    date: 'Someday Soon',
+    orgin: "",
+    genre: "",
+    language: "",
+    description: "",
+    director: "",
+  },
+  {
+    id: 7,
+    image: "Movie Image Here",
+    title: "Featured Movie",
+    date: 'Someday Soon',
     orgin: "",
     genre: "",
     language: "",
