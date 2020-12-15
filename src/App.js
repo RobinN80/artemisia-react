@@ -6,8 +6,6 @@ import Movies from './components/moviesComponent';
 import Contact from './components/contactComponent';
 
 
-
-
 class App extends Component {
  render(){
    return(

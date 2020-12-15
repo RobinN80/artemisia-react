@@ -8,7 +8,7 @@ function RenderMovie(props) {
         console.log("Movie Props", props);
         return(
             <Row style={{display: 'inline-block', width: 350, margin: 10}}>
-                <Card>
+                <Card style={{borderRadius: 45, borderWidth: 'thick'}}>
                     <CardHeader style={{fontSize: 20}}>{title}</CardHeader>
                     <CardBody>
                         <div style= {{paddingBottom: 10, fontSize: 18, backgroundColor: "yellowgreen"}}>{date}</div>
@@ -17,12 +17,12 @@ function RenderMovie(props) {
                         </div>
                         <Collapse isOpen= {props.showInfo}>
                             <Row style={{display: 'inline-block', width: "500", margin: 10}}>
-                                <Card>
+                                <Card className= "flex-container">
                                     <CardHeader>{title}</CardHeader>
-                                    <CardBody>{description}</CardBody>
-                                    <Button onClick = {props.toggleInfo} color="primary">Show Less</Button>
+                                    <CardBody>{description}</CardBody>    
                                 </Card>
-                            </Row>)
+                                <Button onClick = {props.toggleInfo} color="primary">Show Less</Button>
+                            </Row>
                         </Collapse>
                         <CardFooter>
                             <Collapse isOpen={!props.showInfo}>
@@ -32,7 +32,7 @@ function RenderMovie(props) {
                         </CardFooter>
                     </CardBody> 
                     <Modal isOpen={props.isTicketModalOpen}>
-                    <ModalHeader toggle={props.toggleTicketModal} >Purchase Tickets for {title}</ModalHeader>
+                    <ModalHeader toggle={props.toggleTicketModal} ><i className= "fa fa-ticket-alt fa-lg"/>Purchase Tickets for {title}</ModalHeader>
                     <ModalBody>
                         <Form>
                             <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
@@ -73,10 +73,12 @@ function RenderMovie(props) {
                                     </select>
                                 </label>
                             </FormGroup>
-                            Total Price:  $ {props.numRegular*9 + props.numSenStud*7 + props.numMembers*5}
+                            <FormGroup>
+                            Total Price:  $ {props.numRegular*9 + props.numSenStud*7 + props.numMembers*5 }
                             <Button onClick={props.handleSubmit}>
                                 Purchase Tickets
                             </Button>
+                            </FormGroup>
                         </Form>
                     </ModalBody>
 
@@ -140,16 +142,6 @@ class Movies extends Component{
 
 
     render(){
-        const styles = {
-            FormGroup: {
-                alignContent: 'center',
-                fontSize: 'small'
-            },
-            Button: {
-                color: 'blue'
-            }
-        }
-    
     return ( 
             <div>
             {MOVIES.map( MOVIE => 
