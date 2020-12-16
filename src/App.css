@@ -46,10 +46,6 @@
   font-weight: 400;
 }
 
-.jumbotron {
-  background-color:red;
-}
-
 .form-group {
   text-align: center;
   font-size: x-large;
@@ -60,6 +56,10 @@
 }
 
 .flex-container {
-  height:400px;
+  height:350px;
   overflow-y: scroll;
+}
+
+.nav-item {
+  padding: 10;
 }

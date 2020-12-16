@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, CardImg, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import MOVIES from '../shared/movies';
-//import '../App.css';
 
 function RenderMovie(props) {
         const {title, image, date, description} = props.movie;
@@ -12,31 +11,26 @@ function RenderMovie(props) {
                     <CardHeader style={{fontSize: 20}}>{title}</CardHeader>
                     <CardBody>
                         <div style= {{paddingBottom: 10, fontSize: 18, backgroundColor: "yellowgreen"}}>{date}</div>
-                        <div src={image} alt='movie image'>
-                            {image}
-                        </div>
+                        <CardImg src={image} alt='movie image' />
                         <Collapse isOpen= {props.showInfo}>
                             <Row style={{display: 'inline-block', width: "500", margin: 10}}>
                                 <Card className= "flex-container">
-                                    <CardHeader>{title}</CardHeader>
                                     <CardBody>{description}</CardBody>    
                                 </Card>
                                 <Button onClick = {props.toggleInfo} color="primary">Show Less</Button>
                             </Row>
                         </Collapse>
-                        <CardFooter>
                             <Collapse isOpen={!props.showInfo}>
-                                <Button onClick={props.toggleInfo} style={{margin: 10}}>More Info</Button>
+                                <Button onClick={props.toggleInfo} style={{margin: 10}}>More Info</Button> 
                             </Collapse>
                             <Button onClick={props.toggleTicketModal} style={{margin: 10}} color="primary">Buy Tickets</Button>
-                        </CardFooter>
                     </CardBody> 
                     <Modal isOpen={props.isTicketModalOpen}>
-                    <ModalHeader toggle={props.toggleTicketModal} ><i className= "fa fa-ticket-alt fa-lg"/>Purchase Tickets for {title}</ModalHeader>
+                    <ModalHeader toggle={props.toggleTicketModal} ><i className= "fa fa-ticket-alt fa-2x"/>Purchase Tickets for {title}</ModalHeader>
                     <ModalBody>
                         <Form>
                             <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
-                                Regular Admission $9
+                                Regular Admission $9 {''}
                                 <select value= {props.numRegular} onChange={props.handleChangeRegular}>
                                     <option value={0}>0</option>
                                     <option value={1}>1</option>
@@ -49,7 +43,7 @@ function RenderMovie(props) {
 
                             </FormGroup>
                             <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
-                                Seniors and Students $7
+                                Seniors and Students $7 {''}
                                 <select value={props.numSenStud} onChange={props.handleChangeSenStud}>
                                     <option value={0}>0</option>
                                     <option value={1}>1</option>
@@ -61,7 +55,7 @@ function RenderMovie(props) {
                                 </select>
                             </FormGroup>
                             <FormGroup style={{textAlign :'center', fontSize : 'large'}}>
-                                <label>Members $5 
+                                <label>Members $5 {''}
                                     <select value={props.numMembers} onChange={props.handleChangeMember} >
                                         <option value={0}>0</option>
                                         <option value={1}>1</option>
@@ -74,7 +68,7 @@ function RenderMovie(props) {
                                 </label>
                             </FormGroup>
                             <FormGroup>
-                            Total Price:  $ {props.numRegular*9 + props.numSenStud*7 + props.numMembers*5 }
+                            Total Price:  $ {''} {props.numRegular*9 + props.numSenStud*7 + props.numMembers*5 }
                             <Button onClick={props.handleSubmit}>
                                 Purchase Tickets
                             </Button>
@@ -88,7 +82,6 @@ function RenderMovie(props) {
         )
 
 }
-
 
 
 class Movies extends Component{
@@ -137,6 +130,7 @@ class Movies extends Component{
     handleSubmit(){
         console.log('tickets:', this.state.numMembers, this.state.numSenStud, this.state.numRegular);
         this.setState ({totalPrice : this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5});
+        this.toggleTicketModal();
     } 
 
 
@@ -147,7 +141,6 @@ class Movies extends Component{
             {MOVIES.map( MOVIE => 
                 {
                 return(
-                    <>
                         <RenderMovie 
                             key={MOVIE.id} 
                             movie={MOVIE} 
@@ -165,7 +158,6 @@ class Movies extends Component{
                             handleChangeSenStud={this.handleChangeSenStud}
                             handleSubmit={this.handleSubmit}
                         />
-                    </>
                 );
                 })
             }

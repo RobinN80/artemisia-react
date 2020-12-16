@@ -1,12 +1,16 @@
-import scentofgreenpapaya from './images/scentofgreenpapaya.jpg';
-import bigLilFarm from '../shared/images/big-lil-farm.jpg'
-//import projector from '../shared/images/'
+import image1 from './images/popcorn.jpg';
+import scentImg from './images/scentofgreenpapaya.jpg';
+import bigLilImg from './images/big-lil-farm.jpg';
+import satanAndAdamImg from './images/satan&adam.jpg';
+import banuelImg from './images/buneal.jpg';
+import ingmarImg from './images/ingmarbergmandoc.jpg';
+
 
 
 export const MOVIES = [
   {
     id: 0,
-    image: "Movie Image Here",
+    image: scentImg ,
     title: "THE SCENT OF GREEN PAPAYA",
     date: "Postponed Until Futher Notice ",
     orgin: "(1993) France/Vietnam 104 min",
@@ -18,7 +22,7 @@ export const MOVIES = [
   },
   {
     id: 1,
-    image: "Movie Image Here",
+    image: bigLilImg,
     title: "THE BIGGEST LITTLE FARM",
     date: "Postponed Until Futher Notice ",
     orgin: "(2018) USA 89 min.",
@@ -30,7 +34,7 @@ export const MOVIES = [
   },
   {
     id: 2,
-    image: "Movie Image Here",
+    image: satanAndAdamImg,
     title: "SATAN AND ADAM",
     date: "Postponed Until Futher Notice ",
     orgin: "(2018) USA  80 min.",
@@ -42,7 +46,7 @@ export const MOVIES = [
   },
   {
     id: 3,
-    image: "Movie Image Here",
+    image: banuelImg,
     title: "Bunuel in the Labyrinth of Turtles",
     date: "Postponed Until Futher Notice ",
     orgin: "(2018) Spain",
@@ -53,7 +57,7 @@ export const MOVIES = [
   },
   {
     id: 4,
-    image: "Movie Image Here",
+    image: ingmarImg,
     title: "Searching for Ingmar",
     date: "Postponed Until Futher Notice ",
     orgin: "Germany/France (2018) 99 min. ",
@@ -65,7 +69,7 @@ export const MOVIES = [
   },
   {
     id: 5,
-    image: "Movie Image Here",
+    image: image1,
     title: "Featured Movie",
     date: 'Someday Soon',
     orgin: "",
@@ -76,7 +80,7 @@ export const MOVIES = [
   },
   {
     id: 6,
-    image: "Movie Image Here",
+    image: image1,
     title: "Featured Movie",
     date: 'Someday Soon',
     orgin: "",
@@ -87,7 +91,7 @@ export const MOVIES = [
   },
   {
     id: 7,
-    image: "Movie Image Here",
+    image: image1,
     title: "Featured Movie",
     date: 'Someday Soon',
     orgin: "",
