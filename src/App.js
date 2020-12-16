@@ -16,7 +16,6 @@ class App extends Component {
        <hr/>
        <Switch>
           <Route path='/home' component={Movies}/>
-          <Route path='/about' />
           <Route exact path='/contact' component={About}/>
           <Redirect to='/home'/>
        </Switch>

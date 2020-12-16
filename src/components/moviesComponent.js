@@ -139,8 +139,6 @@ class Movies extends Component{
         this.state = {
             movies: MOVIES,
         };
-
-
     }
 
     render(){
@@ -148,16 +146,16 @@ class Movies extends Component{
             <div>
             {this.state.movies.map( MOVIE =>  
                 {
-                return(
-                        <RenderMovie 
-                            key={MOVIE.id} 
-                            movie={MOVIE} 
-                        />
-                );
+                    return(
+                            <RenderMovie 
+                                key={MOVIE.id} 
+                                movie={MOVIE} 
+                            />
+                    );
                 })
             }
             </div>  
-    )
+        )
     }
 }
 
