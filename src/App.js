@@ -3,7 +3,8 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
 import Header from './components/headerComponent';
 import Movies from './components/moviesComponent';
-import Contact from './components/contactComponent';
+import About from './components/AboutComponent';
+import Footer from './components/footerComponent';
 
 
 class App extends Component {
@@ -16,10 +17,11 @@ class App extends Component {
        <Switch>
           <Route path='/home' component={Movies}/>
           <Route path='/about' />
-          <Route exact path='/contact' component={Contact}/>
+          <Route exact path='/contact' component={About}/>
           <Redirect to='/home'/>
        </Switch>
        <hr/>
+       <Footer/>
      </div>
      </BrowserRouter>
    )
