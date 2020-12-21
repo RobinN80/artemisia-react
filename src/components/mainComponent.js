@@ -4,6 +4,7 @@ import Header from './headerComponent';
 import Movies from './moviesComponent';
 import About from './AboutComponent';
 import Footer from './footerComponent';
+import FindUs from './FindUsComponent';
 
 class Main extends Component {
     render(){
@@ -14,6 +15,7 @@ class Main extends Component {
             <Switch>
                 <Route path='/home' component={Movies}/>
                 <Route exact path='/contact' component={About}/>
+                <Route exact path='/findus' component={FindUs}/>
                 <Redirect to='/home'/>
             </Switch>
             <hr/>
