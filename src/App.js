@@ -1,28 +1,22 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {ConfigureStore} from './redux/configureStore';
 import './App.css';
-import Header from './components/headerComponent';
-import Movies from './components/moviesComponent';
-import About from './components/AboutComponent';
-import Footer from './components/footerComponent';
+import Main from './components/mainComponent';
+
+
+const store = ConfigureStore();
 
 
 class App extends Component {
  render(){
    return(
-    <BrowserRouter> 
-     <div>
-       <Header/>
-       <hr/>
-       <Switch>
-          <Route path='/home' component={Movies}/>
-          <Route exact path='/contact' component={About}/>
-          <Redirect to='/home'/>
-       </Switch>
-       <hr/>
-       <Footer/>
-     </div>
-     </BrowserRouter>
+     <Provider store={store}>
+        <BrowserRouter> 
+            <Main/>
+        </BrowserRouter>
+     </Provider>
    )
  }
 }

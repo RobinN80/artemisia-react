@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import { Button, Card, CardBody, CardFooter, CardImg, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
-import MOVIES from '../shared/movies';
+import {connect} from 'react-redux';
+
+
+const mapStateToProps = state => {
+    return {
+        movies: state.movies
+    };
+};
 
 class RenderMovie extends Component {
     constructor(props){
@@ -29,7 +36,6 @@ class RenderMovie extends Component {
     toggleInfo(){
         this.setState({ showInfo: !this.state.showInfo });
     }
-
     
     handleChangeRegular(event){
             this.setState({numRegular: event.target.value});
@@ -134,17 +140,11 @@ class RenderMovie extends Component {
 
 
 class Movies extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            movies: MOVIES,
-        };
-    }
 
     render(){
     return ( 
             <div>
-            {this.state.movies.map( MOVIE =>  
+            {this.props.movies.map( MOVIE =>  
                 {
                     return(
                             <RenderMovie 
@@ -162,4 +162,4 @@ class Movies extends Component{
 
 
 
-export default Movies;
+export default connect(mapStateToProps)(Movies);
