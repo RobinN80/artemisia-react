@@ -1,10 +1,10 @@
 import {MOVIES} from '../shared/movies';
-import {addItemtoCart, deleteItemfromCart} from './actions';
+import * as ActionTypes from './actionTypes';
 
-export const initialState = {
+/*export const initialState = {
     movies: MOVIES,
     shoppingCart: []
-};
+};*/
 
 export const Movies = (state = MOVIES, action) => {
     switch (action.type) {
@@ -14,12 +14,19 @@ export const Movies = (state = MOVIES, action) => {
 };
 
 
-export const updateCartReducer = (state = {shoppingCart: []}, action) => {
+export const updateCartReducer = (state = [], action) => {
     switch (action.type){
-        case addItemtoCart.ADD_ITEM:
-            return {...state, shoppingCart: action.payload};
-        case deleteItemfromCart.DELETE_ITEM:
-            return {...state, shoppingCart: []};
+        case ActionTypes.ADD_ITEM:
+            return [
+                ...state, 
+                {
+                    title: action.payload.title,
+                    numRegular: action.payload.numRegular,
+                    numSenStud: action.payload.numSenStud,
+                    numMembers: action.payload.numMembers
+                }];
+        case ActionTypes.DELETE_ITEM:
+            return state.filter(movie => movie.title != action.payload.title);
         default:
             return state;
     }

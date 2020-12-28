@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Card, CardBody, CardFooter, CardImg, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
+import {addItemToCart} from '../redux/actions';
 
 
 const mapStateToProps = state => {
@@ -50,9 +51,13 @@ class RenderMovie extends Component {
         }
     
     handleSubmit(){
-            console.log('tickets:', this.state.numMembers, this.state.numSenStud, this.state.numRegular);
-            this.setState ({totalPrice : this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5});
+            const {numMembers, numRegular, numSenStud} = this.state;
+            const {title}= this.props.movies;
+            console.log('tickets:', this.state);
+            this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
+            useDispatch(addItemToCart(title, numRegular, numSenStud, numMembers));
             this.toggleTicketModal();
+            
         } 
         
         render(){
@@ -150,6 +155,7 @@ class Movies extends Component{
                             <RenderMovie 
                                 key={MOVIE.id} 
                                 movie={MOVIE} 
+                                addItemToCart={this.props.addItemToCart}
                             />
                     );
                 })

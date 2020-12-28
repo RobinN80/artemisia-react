@@ -3,10 +3,12 @@ import { Movies, updateCartReducer} from './reducer';
 
 const allReducers = combineReducers({
     movies: Movies,
-    cart: updateCartReducer
+    shoppingCart: updateCartReducer
 })
 
 export const ConfigureStore = () => {
-    const store = createStore(allReducers);
+    const store = createStore(
+        allReducers, 
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
     return store;
 };

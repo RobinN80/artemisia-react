@@ -5,6 +5,14 @@ import Movies from './moviesComponent';
 import About from './AboutComponent';
 import Footer from './footerComponent';
 import FindUs from './FindUsComponent';
+import {addItemToCart} from '../redux/actions';
+import { connect } from 'react-redux';
+import ShoppingCart from './ShoppingCartComponent';
+
+const mapDispatchToProps = {
+    addItemToCart: (title, numRegular, numSenStud, numMembers) => (addItemToCart(title, numRegular, numSenStud, numMembers))
+};
+
 
 class Main extends Component {
     render(){
@@ -13,9 +21,10 @@ class Main extends Component {
             <Header/>
             <hr/>
             <Switch>
-                <Route path='/home' component={Movies}/>
+                <Route path='/home' render={(props) => (<Movies  addItemtoCart={this.props.addItemtoCart}/>)}/>
                 <Route exact path='/contact' component={About}/>
                 <Route exact path='/findus' component={FindUs}/>
+                <Route exact path= '/cart' component={ShoppingCart}/>
                 <Redirect to='/home'/>
             </Switch>
             <hr/>
@@ -26,4 +35,4 @@ class Main extends Component {
 
 }
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);

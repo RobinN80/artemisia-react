@@ -1,12 +1,48 @@
 import React from 'react';
-import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Media} from 'reactstrap';
+import { Movies } from '../redux/reducer';
+import {addItemtoCart} from '../redux/actions';
+import { connect } from 'react-redux';
+import { Component } from 'react';
 
-function ShoppingCart(props){
+const mapStateToProps = state => {
+    return {
+        shoppingCart: state.shoppingCart
+    };
+};
+
+
+function ShoppingCartItem() {
     return (
-        <Modal>
-            <ModalHeader>Your ShoppingCart</ModalHeader>
-            <ModalBody></ModalBody>
-            <ModalFooter></ModalFooter>
-        </Modal>
+        <Media>
+            <Media left href="">
+                <Media object data-src="" alt=""/>
+            </Media>
+            <Media body>
+                <Media heading>
+                    {}
+                </Media>
+                Date of film and title of film goes here
+            </Media>
+        </Media>
     );
 }
+
+function ShoppingCart(props) {
+    const shoppingCart = props.shoppingCart;
+    console.log(shoppingCart);
+
+    if (shoppingCart.length == 0) {
+        return(
+            <Media>
+            Your Shopping Cart is Empty!
+            </Media>
+        );
+    } else {
+        return(
+            <ShoppingCartItem/>
+        );
+    }  
+}
+
+export default connect(mapStateToProps)(ShoppingCart);

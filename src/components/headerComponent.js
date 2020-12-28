@@ -35,6 +35,11 @@ class Header extends Component{
                                 <i className="fa fa-map-marker fa-2x" /> Find Us
                             </NavLink>
                         </NavItem>
+                        <NavItem className="nav-link">
+                            <NavLink to='/cart'>
+                                <i className="fa fa-shopping-cart fa-2x" /> Shopping Cart
+                            </NavLink>
+                        </NavItem>
                     </Nav>
                 </Navbar>
             </div>
