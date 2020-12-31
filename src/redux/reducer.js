@@ -13,18 +13,22 @@ export const Movies = (state = MOVIES, action) => {
     }
 };
 
+const lastId = 0;
 
 export const updateCartReducer = (state = [], action) => {
     switch (action.type){
-        case ActionTypes.ADD_ITEM:
+        case ActionTypes.ADD_MOVIE:
             return [
                 ...state, 
-                {
+                {   
+                    id: ++lastId,
                     title: action.payload.title,
-                    numRegular: action.payload.numRegular,
-                    numSenStud: action.payload.numSenStud,
-                    numMembers: action.payload.numMembers
                 }];
+        case ActionTypes.ADD_REG_TICKET:
+            return state.map( 
+                movie => movie.title !== action.payload.title ? 
+                movie :
+                ({...movie, numRegular : action.payload.numRegular}) );
         case ActionTypes.DELETE_ITEM:
             return state.filter(movie => movie.title != action.payload.title);
         default:

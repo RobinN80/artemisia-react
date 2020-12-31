@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Button, Card, CardBody, CardFooter, CardImg, CardHeader, Col, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
-import {connect, useDispatch} from 'react-redux';
-import {addItemToCart} from '../redux/actions';
+import { Button, Card, CardBody, CardImg, CardHeader, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
+import {connect} from 'react-redux';
+import {addMovie, addRegTicket} from '../redux/actions';
 
 
 const mapStateToProps = state => {
@@ -9,6 +9,11 @@ const mapStateToProps = state => {
         movies: state.movies
     };
 };
+
+const mapDispatchToProps = dispatch => ({
+    addMovie: (title) => dispatch(addMovie(title)),
+    addRegTicket: (numRegular) => dispatch(addRegTicket(numRegular))
+});
 
 class RenderMovie extends Component {
     constructor(props){
@@ -51,11 +56,12 @@ class RenderMovie extends Component {
         }
     
     handleSubmit(){
-            const {numMembers, numRegular, numSenStud} = this.state;
-            const {title}= this.props.movies;
+            const numRegular = this.state.numRegular;
+            const title = this.props.movies.title;
             console.log('tickets:', this.state);
-            this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
-            useDispatch(addItemToCart(title, numRegular, numSenStud, numMembers));
+            //this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
+            this.props.addMovie(title);
+            this.props.addRegTicket(numRegular);
             this.toggleTicketModal();
             
         } 
@@ -145,7 +151,6 @@ class RenderMovie extends Component {
 
 
 class Movies extends Component{
-
     render(){
     return ( 
             <div>
@@ -155,7 +160,6 @@ class Movies extends Component{
                             <RenderMovie 
                                 key={MOVIE.id} 
                                 movie={MOVIE} 
-                                addItemToCart={this.props.addItemToCart}
                             />
                     );
                 })
@@ -168,4 +172,4 @@ class Movies extends Component{
 
 
 
-export default connect(mapStateToProps)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);
