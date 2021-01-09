@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Header from './headerComponent';
 import Movies from './moviesComponent';
 import About from './AboutComponent';
 import Footer from './footerComponent';
 import FindUs from './FindUsComponent';
 import ShoppingCart from './ShoppingCartComponent';
-
-//const mapDispatchToProps = {
-//    addItemToCart: (title, numRegular, numSenStud, numMembers) =>   (addItemToCart(title, numRegular, numSenStud, numMembers))
-// };
 
 
 class Main extends Component {

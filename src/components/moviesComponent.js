@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Card, CardBody, CardImg, CardHeader, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import {connect} from 'react-redux';
-import {addMovie, addRegTicket} from '../redux/actions';
+import {addMovie} from '../redux/actions';
 
 
 const mapStateToProps = state => {
@@ -10,10 +10,9 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
-    addMovie: (title) => dispatch(addMovie(title)),
-    addRegTicket: (numRegular) => dispatch(addRegTicket(numRegular))
-});
+const mapDispatchToProps = {
+    addMovie: (title, numRegular, numSenStud, numMembers) => (addMovie(title, numRegular, numSenStud, numMembers)) 
+};
 
 class RenderMovie extends Component {
     constructor(props){
@@ -55,20 +54,20 @@ class RenderMovie extends Component {
             this.setState({numMembers: event.target.value});
         }
     
-    handleSubmit(){
-            const numRegular = this.state.numRegular;
-            const title = this.props.movies.title;
+    handleSubmit() {
+            const {numRegular, numSenStud, numMembers} = this.state;
+            const {title} = this.props.movie;
+            this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
             console.log('tickets:', this.state);
-            //this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
-            this.props.addMovie(title);
-            this.props.addRegTicket(numRegular);
+            const ticket = {title: title, numRegular: numRegular, numSenStud: numSenStud, numMembers: numMembers };
+            this.props.addMovie(ticket);
             this.toggleTicketModal();
             
         } 
         
         render(){
             const {title, image, date, description} = this.props.movie;
-            console.log("Movie Props", this.props);
+            console.log("Props", this.props);
             return(
                 <Row style={{display: 'inline-block', width: 350, margin: 10}}>
                     <Card style={{borderRadius: 45, borderWidth: 'thick'}}>
@@ -133,7 +132,7 @@ class RenderMovie extends Component {
                                     </FormGroup>
                                     <FormGroup>
                                     Total Price:  $ {''} {this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5 }
-                                    <Button onClick={this.props.handleSubmit}>
+                                    <Button onClick={this.handleSubmit}>
                                         Purchase Tickets
                                     </Button>
                                     </FormGroup>
@@ -157,9 +156,9 @@ class Movies extends Component{
             {this.props.movies.map( MOVIE =>  
                 {
                     return(
-                            <RenderMovie 
+                            <ConnectedRenderMovie 
                                 key={MOVIE.id} 
-                                movie={MOVIE} 
+                                movie={MOVIE}
                             />
                     );
                 })
@@ -170,6 +169,6 @@ class Movies extends Component{
 }
 
 
+const ConnectedRenderMovie = connect(null, mapDispatchToProps)(RenderMovie);
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Movies);
+export default connect(mapStateToProps)(Movies);

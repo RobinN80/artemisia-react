@@ -1,9 +1,6 @@
 import React from 'react';
 import {Media} from 'reactstrap';
-import { Movies } from '../redux/reducer';
-import {addItemtoCart} from '../redux/actions';
 import { connect } from 'react-redux';
-import { Component } from 'react';
 
 const mapStateToProps = state => {
     return {
@@ -32,7 +29,7 @@ function ShoppingCart(props) {
     const shoppingCart = props.shoppingCart;
     console.log(shoppingCart);
 
-    if (shoppingCart.length == 0) {
+    if (shoppingCart.length === 0) {
         return(
             <Media>
             Your Shopping Cart is Empty!
