@@ -9,15 +9,15 @@ export const Movies = (state = MOVIES, action) => {
 };
 
 
-export const updateCartReducer = (state = {movies: []}, action) => {
+export const updateCartReducer = (state = {tickets: []}, action) => {
     switch (action.type){
-        case ActionTypes.ADD_MOVIE:
+        case ActionTypes.ADD_TICKETS:
             console.log("action payload", action.payload);
             return {
-                ...state, movies: [...state.movies, action.payload]
+                ...state, tickets: [...state.tickets, action.payload]
             };
         case ActionTypes.DELETE_ITEM:
-            return state.filter(movie => movie.title !== action.payload.title);
+            return state.filter(ticket => ticket.title !== action.payload.title);
         default:
             return state;
     };

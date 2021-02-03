@@ -2,9 +2,9 @@
 import * as ActionTypes from './actionTypes';
 
 
-export const addMovie = (movie) =>({
-    type: ActionTypes.ADD_MOVIE,
-    payload: movie
+export const addTickets = (ticket) =>({
+    type: ActionTypes.ADD_TICKETS,
+    payload: ticket
 });
 
 

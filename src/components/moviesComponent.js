@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Card, CardBody, CardImg, CardHeader, Collapse, Form, FormGroup, Modal, ModalBody, ModalHeader, Row } from 'reactstrap';
 import {connect} from 'react-redux';
-import {addMovie} from '../redux/actions';
+import {addTickets} from '../redux/actions';
 
 
 const mapStateToProps = state => {
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    addMovie: (title, numRegular, numSenStud, numMembers) => (addMovie(title, numRegular, numSenStud, numMembers)) 
+    addTickets: (title, image, numRegular, numSenStud, numMembers) => (addTickets(title, image, numRegular, numSenStud, numMembers)) 
 };
 
 class RenderMovie extends Component {
@@ -56,18 +56,18 @@ class RenderMovie extends Component {
     
     handleSubmit() {
             const {numRegular, numSenStud, numMembers} = this.state;
-            const {title} = this.props.movie;
+            const {title , image} = this.props.movie;
             this.setState ({totalPrice : numRegular*9 + numSenStud*7 + numMembers*5});
             console.log('tickets:', this.state);
-            const ticket = {title: title, numRegular: numRegular, numSenStud: numSenStud, numMembers: numMembers };
-            this.props.addMovie(ticket);
+            const ticket = {title: title, image: image, numRegular: numRegular, numSenStud: numSenStud, numMembers: numMembers};
+            this.props.addTickets(ticket);
             this.toggleTicketModal();
             
         } 
         
         render(){
             const {title, image, date, description} = this.props.movie;
-            console.log("Props", this.props);
+            //console.log("Props", this.props);
             return(
                 <Row style={{display: 'inline-block', width: 350, margin: 10}}>
                     <Card style={{borderRadius: 45, borderWidth: 'thick'}}>
