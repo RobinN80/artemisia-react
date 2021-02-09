@@ -9,13 +9,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-// function ShoppingCartItem() {
-//     console.log("shopping cart:", props);
-//     return (
-
-//     );
-// }
-
 function ShoppingCart(props) {
   const tickets = props.shoppingCart.tickets;
   console.log("shoppingCart:", tickets);
@@ -29,11 +22,11 @@ function ShoppingCart(props) {
           return (
             <Media>
               <Media left middle>
-                <Media object src={ticket.image} alt={ticket.title} />
+                <Media object classname="media-image" style={{width: 200, height: 200}} src={ticket.image} alt={ticket.title} />
               </Media>
               <Media body>
-                <Media heading></Media>
-                For {ticket.title}
+                <Media heading>{ticket.title}</Media>
+                Regular Tickets: {ticket.numRegular} 
               </Media>
             </Media>
           );
@@ -43,6 +36,6 @@ function ShoppingCart(props) {
   }
 }
 
-//const ConnectedShoppingCart = connect(mapStateToProps)(ShoppingCartItem);
+
 
 export default connect(mapStateToProps)(ShoppingCart);
