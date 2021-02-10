@@ -1,0 +1,16 @@
+.empty-cart {
+  margin-left: 25%;
+  font-size: x-large;
+}
+
+.media-group {
+  border-radius: 25%;
+  border-width: thick;
+  margin-left: 5%;
+}
+
+.media-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 25%;
+}

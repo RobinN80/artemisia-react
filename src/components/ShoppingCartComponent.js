@@ -1,7 +1,8 @@
 import React from "react";
-import { Media } from "reactstrap";
+import { Media , Button } from "reactstrap";
 import { connect } from "react-redux";
-import moviesComponent from "./moviesComponent";
+import '../ComponentCSS/ShoppingCart.css';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -14,20 +15,26 @@ function ShoppingCart(props) {
   console.log("shoppingCart:", tickets);
 
   if (tickets.length === 0) {
-    return <Media>Your Shopping Cart is Empty!</Media>;
+    return <Media className="empty-cart">Your Shopping Cart is Empty!</Media>;
   } else {
     return (
       <div>
         {tickets.map((ticket) => {
           return (
-            <Media>
-              <Media left middle>
-                <Media object classname="media-image" style={{width: 200, height: 200}} src={ticket.image} alt={ticket.title} />
+            <Media className="media-group">
+              <Media left middle className = "media-group">
+                <Media object className="media-image" src={ticket.image} alt={ticket.title} />
               </Media>
               <Media body>
                 <Media heading>{ticket.title}</Media>
-                Regular Tickets: {ticket.numRegular} 
+                <ul>
+                  <li>Regular Tickets: {ticket.numRegular}</li>
+                  <li>Member Tickets: {ticket.numMembers}</li>
+                  <li>Senior/Student Tickets: {ticket.numSenStud}</li>
+                </ul>
+                
               </Media>
+              <Button>Remove Tickets</Button>
             </Media>
           );
         })}
