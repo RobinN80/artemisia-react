@@ -8,7 +8,7 @@ export const addTickets = (ticket) =>({
 });
 
 
- export const deleteItemfromCart = (id) => ({
+ export const deleteItemFromCart = (id) => ({
     type: ActionTypes.DELETE_ITEM,
     payload: id
 });

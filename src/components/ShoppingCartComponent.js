@@ -2,12 +2,17 @@ import React from "react";
 import { Media , Button } from "reactstrap";
 import { connect } from "react-redux";
 import '../ComponentCSS/ShoppingCart.css';
+import {deleteItemFromCart} from '../redux/actions';
 
 
 const mapStateToProps = (state) => {
   return {
     shoppingCart: state.shoppingCart,
   };
+};
+
+const mapDispatchToProps = {
+  deleteItemFromCart: (title, image, numRegular, numSenStud, numMembers) => (deleteItemFromCart(title, image, numRegular, numSenStud, numMembers)) 
 };
 
 function ShoppingCart(props) {
@@ -34,7 +39,7 @@ function ShoppingCart(props) {
                 </ul>
                 
               </Media>
-              <Button>Remove Tickets</Button>
+              <Button onClick = {props.deleteItemFromCart}>Remove Tickets</Button>
             </Media>
           );
         })}
@@ -45,4 +50,4 @@ function ShoppingCart(props) {
 
 
 
-export default connect(mapStateToProps)(ShoppingCart);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

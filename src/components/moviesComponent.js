@@ -133,7 +133,7 @@ class RenderMovie extends Component {
                                     <FormGroup>
                                     Total Price:  $ {''} {this.state.numRegular*9 + this.state.numSenStud*7 + this.state.numMembers*5 }
                                     <Button onClick={this.handleSubmit}>
-                                        Purchase Tickets
+                                        Add To Shopping Cart
                                     </Button>
                                     </FormGroup>
                                 </Form>

@@ -17,7 +17,7 @@ export const updateCartReducer = (state = {tickets: []}, action) => {
                 ...state, tickets: [...state.tickets, action.payload]
             };
         case ActionTypes.DELETE_ITEM:
-            return state.filter(ticket => ticket.title !== action.payload.title);
+            return  {...state, tickets: [state.tickets.filter(ticket => ticket.title !== action.payload.title)]};
         default:
             return state;
     };
