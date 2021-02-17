@@ -1,26 +1,97 @@
-import React from 'react';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Label,
+  Input,
+  Form,
+  FormGroup,
+} from "reactstrap";
+import React, { Component } from "react";
 
-function Footer (){
-    return(
-        <footer className='site-footer'>
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-3">
-                        <h5>Contact Us</h5>
-                        <ul className="list-unstyled">
-                            <li><i className= "fa fa-envelope"/> info@Artemisiamovies.org</li>
-                            <li><i className="fa fa-phone"/> 775-337-9111</li>
-                            <li><i className="fa fa-map-marker"/>214 W. Taylor St. Reno, NV 89509</li>
-                        </ul>
-                    </div>
-                    <div className="col-9">
-                        <p className="text-center font-weight-light">The Artemisa MovieHouse is a project of Great Basin Film Society 501(c)3</p>
-                    </div>
-                </div>
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoginModalOpen: false,
+    };
+  }
+
+  toggleLoginModal = () => {
+    this.setState({ isLoginModalOpen: !this.state.isLoginModalOpen });
+  };
+
+  render() {
+    return (
+      <footer className="site-footer">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-3">
+              <h5>Contact Us</h5>
+              <ul className="list-unstyled">
+                <li>
+                  <i className="fa fa-envelope" /> info@Artemisiamovies.org
+                </li>
+                <li>
+                  <i className="fa fa-phone" /> 775-337-9111
+                </li>
+                <li>
+                  <i className="fa fa-map-marker" />
+                  214 W. Taylor St. Reno, NV 89509
+                </li>
+              </ul>
             </div>
-        </footer>
-    )
-
+            <div className="col-8">
+              <p className="text-center font-weight-light">
+                The Artemisa MovieHouse is a project of Great Basin Film Society
+                501(c)3
+              </p>
+            </div>
+            <div className="col-1">
+              <Button onClick={this.toggleLoginModal}>
+                <i className="fa fa-unlock" />
+                Login
+              </Button>
+            </div>
+            <Modal
+              isOpen={this.state.isLoginModalOpen}
+              toggle={this.toggleLoginModal}
+            >
+              <ModalHeader toggle={this.toggleLoginModal}>
+                Admin Login
+              </ModalHeader>
+              <ModalBody>
+                <Form>
+                  <FormGroup>
+                    <Label htmlFor="username">Username:</Label>
+                    <Input
+                      type="text"
+                      id="username"
+                      name="username"
+                      innerRef={(input) => (this.username = input)}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label>Password:</Label>
+                    <Input
+                      type="password"
+                      id="password"
+                      name="password"
+                      innerRef={(input) => (this.password = input)}
+                    />
+                  </FormGroup>
+                  <Button type="submit" value="submit">
+                    Login
+                  </Button>
+                </Form>
+              </ModalBody>
+            </Modal>
+          </div>
+        </div>
+      </footer>
+    );
+  }
 }
 
 export default Footer;
