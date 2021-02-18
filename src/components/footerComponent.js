@@ -63,7 +63,7 @@ class Footer extends Component {
               </ModalHeader>
               <ModalBody>
                 <Form>
-                  <FormGroup>
+                  <FormGroup className="form-group">
                     <Label htmlFor="username">Username:</Label>
                     <Input
                       type="text"
