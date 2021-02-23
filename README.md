@@ -1,3 +1,7 @@
+Artemisia MovieHouse Homepage created with React.js
+https://github.com/RobinN80/artemisia-react/issues/1#issue-814056456
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
