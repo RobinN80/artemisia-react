@@ -22,6 +22,14 @@ class Footer extends Component {
     this.setState({ isLoginModalOpen: !this.state.isLoginModalOpen });
   };
 
+  handleLogin = (event) => {
+    alert(
+      `Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.value}`
+    );
+    this.toggleLoginModal();
+    event.preventDefault();
+  };
+
   render() {
     return (
       <footer className="site-footer">
@@ -81,7 +89,17 @@ class Footer extends Component {
                       innerRef={(input) => (this.password = input)}
                     />
                   </FormGroup>
-                  <Button type="submit" value="submit">
+                  <FormGroup check>
+                    <Label check>
+                      <Input
+                        type="checkbox"
+                        name="remember"
+                        innerRef={(input) => (this.remember = input)}
+                      />
+                      Remember
+                    </Label>
+                  </FormGroup>
+                  <Button type="submit" value="submit" onClick={this.handleLogin}>
                     Login
                   </Button>
                 </Form>
