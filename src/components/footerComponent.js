@@ -15,6 +15,7 @@ class Footer extends Component {
     super(props);
     this.state = {
       isLoginModalOpen: false,
+      checked: false
     };
   }
 
@@ -24,7 +25,7 @@ class Footer extends Component {
 
   handleLogin = (event) => {
     alert(
-      `Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.value}`
+      `Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`
     );
     this.toggleLoginModal();
     event.preventDefault();
@@ -70,7 +71,7 @@ class Footer extends Component {
                 Admin Login
               </ModalHeader>
               <ModalBody>
-                <Form>
+                <Form onSubmit={this.handleLogin}>
                   <FormGroup className="form-group">
                     <Label htmlFor="username">Username:</Label>
                     <Input
@@ -96,10 +97,10 @@ class Footer extends Component {
                         name="remember"
                         innerRef={(input) => (this.remember = input)}
                       />
-                      Remember
+                      Remember Me
                     </Label>
                   </FormGroup>
-                  <Button type="submit" value="submit" onClick={this.handleLogin}>
+                  <Button type="submit" value="submit" onClick= {this.handleLogin}>
                     Login
                   </Button>
                 </Form>
