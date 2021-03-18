@@ -6,6 +6,7 @@ import About from './AboutComponent';
 import Footer from './footerComponent';
 import FindUs from './FindUsComponent';
 import ShoppingCart from './ShoppingCartComponent';
+import Membership from './MembershipComponent';
 
 
 class Main extends Component {
@@ -19,6 +20,7 @@ class Main extends Component {
                 <Route exact path='/contact' component={About}/>
                 <Route exact path='/findus' component={FindUs}/>
                 <Route exact path= '/cart' component={ShoppingCart}/>
+                <Route exact path = '/membership' component={Membership}/>
                 <Redirect to='/home'/>
             </Switch>
             <hr/>
