@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 const allReducers = combineReducers({
     movies: Movies,
-    shoppingCart: updateCartReducer
+    shoppingCartTickets: updateCartReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

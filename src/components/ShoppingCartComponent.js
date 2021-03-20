@@ -7,7 +7,7 @@ import { Component } from "react";
 
 const mapStateToProps = (state) => {
   return {
-    shoppingCart: state.shoppingCart,
+    shoppingCartTickets: state.shoppingCartTickets,
   };
 };
 
@@ -17,10 +17,6 @@ const mapDispatchToProps = {
 };
 
 class ShoppingCartItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleDelete = () => {
     const {ticket} = this.props;
     this.props.deleteItemFromCart(ticket);
@@ -55,7 +51,7 @@ class ShoppingCartItem extends Component {
 
 function ShoppingCart(props) {
   
-  const tickets = props.shoppingCart.tickets;
+  const tickets = props.shoppingCartTickets;
   console.log("shoppingCart:", tickets);
 
   if (tickets.length === 0) {
